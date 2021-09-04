@@ -1,0 +1,16 @@
+* { 
+    box-sizing: border-box;
+    margin: auto;
+}
+
+body {
+    background: #FAFAFA;
+    color: #222222;
+    min-width: 600px;
+    margin: 0 auto;
+    font-family: sans-serif;
+    }
+
+p{
+    line-height: 1.5rem;
+}
