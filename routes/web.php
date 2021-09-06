@@ -1,8 +1,6 @@
 <?php
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades;
-use Spatie\YamlFrontMatter\YamlFrontMatter;
 
 
 
@@ -14,9 +12,9 @@ Route::get('/', function () {
 });
 
 
-Route::get('/posts/{post}', function ($slug) {
+Route::get('/posts/{post}', function (Post $post) { // wildcard needs to match argument/variable name for this syntax to work
     return view('post', [
-        'post' => Post::findOrFail($slug)
+        'post' => $post
     ]);
 });
 
