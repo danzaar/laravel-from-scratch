@@ -12,7 +12,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('/posts/{post}', function (Post $post) { // wildcard needs to match argument/variable name for this syntax to work
+Route::get('/posts/{post:slug}', function (Post $post) { // wildcard needs to match argument/variable name for this syntax to work
     return view('post', [
         'post' => $post
     ]);
