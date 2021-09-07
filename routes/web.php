@@ -11,12 +11,14 @@ Route::get('/', function () {
 
 });
 
-
 Route::get('/posts/{post:slug}', function (Post $post) { // wildcard needs to match argument/variable name for this syntax to work
     return view('post', [
         'post' => $post
     ]);
 });
 
-
-// })->where('post', '[A-z_\-]+'); // regex forces url to match, these are called 'constraints'
+Route::get('/categories/{category:slug}', function (Category $category) { // wildcard needs to match argument/variable name for this syntax to work
+    return view('post', [
+        'post' => $category->posts
+    ]);
+});
