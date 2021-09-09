@@ -2,44 +2,73 @@
 
 namespace App\Models;
 
+use App\Models\Post;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
 
-class User extends Authenticatable
+//class User extends Authenticatable
+//{
+//
+//    use HasApiTokens, HasFactory, Notifiable;
+//
+//    /**
+//     * The attributes that are mass assignable.
+//     *
+//     * @var string[]
+//     */
+//    protected $fillable = [
+//        'name',
+//        'email',
+//        'password',
+//    ];
+//
+//    /**
+//     * The attributes that should be hidden for serialization.
+//     *
+//     * @var array
+//     */
+//    protected $hidden = [
+//        'password',
+//        'remember_token',
+//    ];
+//
+//    /**
+//     * The attributes that should be cast.
+//     *
+//     * @var array
+//     */
+//    protected $casts = [
+//        'email_verified_at' => 'datetime',
+//    ];
+//    /**
+//     * @var mixed
+//     */
+//
+//    public function post(): HasMany
+//    {
+//        return $this->hasMany(Post::class);
+//    }
+//}
+
+class User extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasFactory;
 
+    protected $posts;
     /**
-     * The attributes that are mass assignable.
-     *
-     * @var string[]
+     * @var mixed
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    private $post;
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function post(): HasMany
+    {
+        return $this->hasMany(Post::class);
+    }
 }
+
