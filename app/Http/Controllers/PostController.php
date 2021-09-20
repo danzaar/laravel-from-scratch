@@ -12,8 +12,10 @@ class PostController extends Controller
     public function index()
     {
         return view('posts.index', [
-            'posts' => Post::latest()->filter(request(['search', 'category', 'author']))->get(),
-//            'categories' => Category::all(),
+            'posts' => Post::latest()->filter(
+                request(['search', 'category', 'author'])
+            )->paginate(6)->withQueryString()
+              //Alternatively, you can use simplePaginate() to only display Previous and Next options
         ]);
     }
 

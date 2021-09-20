@@ -27,9 +27,10 @@ class Post extends Model
 
         // Alternative method with Builder (QueryBuilder
             $query->when($filters['search'] ?? false, fn($query, $search) =>
-            $query
-                ->where('title', 'like', '%' . $search . '%')
+            $query->where(fn($query) =>
+                $query->where('title', 'like', '%' . $search . '%')
                 ->orWhere('body', 'like', '%' . $search . '%')
+                )
             );
         // Category filter
             $query->when($filters['category'] ?? false, fn($query, $category) =>
