@@ -33,10 +33,7 @@ use Laravel\Sanctum\HasApiTokens;
 //     *
 //     * @var array
 //     */
-//    protected $hidden = [
-//        'password',
-//        'remember_token',
-//    ];
+//    protected $guarded = [];
 //
 //    /**
 //     * The attributes that should be cast.
@@ -56,9 +53,27 @@ use Laravel\Sanctum\HasApiTokens;
 //    }
 //}
 
-class User extends Model
+class User extends Authenticatable
 {
     use HasFactory;
+
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+    //this is an ACCESSOR
+    public function getUsernameAttribute($username)
+    {
+        return ucwords($username);
+    }
+
+    //this is an MUTATOR
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = bcrypt($password);
+    }
+
+
+    protected $guarded = [];
 
     protected $posts;
     /**
