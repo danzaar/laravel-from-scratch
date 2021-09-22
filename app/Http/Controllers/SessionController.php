@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Nette\Schema\ValidationException;
+use Illuminate\Http\Request;
 
 class SessionController extends Controller
 {
@@ -20,11 +21,9 @@ class SessionController extends Controller
             'password' => 'required'
         ]);
 
-
         // attempt to authenticate and log in the user
         //based on the provided credentials
         if (auth()->attempt($attributes)) {
-
             // auth failed regular way
 //        return back()
 //            ->withInput()
@@ -36,7 +35,6 @@ class SessionController extends Controller
             ]);
 
         }
-
         session()->regenerate();
         // redirect with a success flash message
         return redirect('/')->with('success', 'Welcome Back!');

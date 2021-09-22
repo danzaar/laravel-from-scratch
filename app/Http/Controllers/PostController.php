@@ -25,4 +25,12 @@ class PostController extends Controller
             'post' => $post
         ]);
     }
+
+    public function create()
+    {
+        return view ('posts.create');
+    }
+
+    // The seven restful (common) controllers
+    // INDEX, SHOW, CREATE, STORE, EDIT, UPDATE, DESTROY
 }

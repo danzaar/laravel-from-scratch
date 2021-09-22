@@ -28,8 +28,8 @@ class CategoryFactory extends Factory
 //        ];
 //        'name' => array_rand($categories),
     return [
-        'name' => $this->faker->word,
-        'slug' => $this->faker->slug
+        'name' => $this->faker->word(),
+        'slug' => $this->faker->slug()
     ];
     }
 }
