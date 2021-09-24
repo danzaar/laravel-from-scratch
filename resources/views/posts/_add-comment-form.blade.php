@@ -10,21 +10,13 @@
             </header>
 
             <div class="mt-6">
-                <textarea name=""
-                          id=""
-                          rows="5"
-                          class="w-full text-sm focus:outline-none focus:ring"
-                          placeholder="Quick, think of something to say"
-                          required>
-                </textarea>
+                <x-form.textarea name="body" />
             </div>
 
-            @error('body')
-            <span class="text-sm text-red">{{ $message }}</span>
-            @enderror
+            <x-form.error name="{{ $name }}"
 
             <div class="flex justify-end mt-6 pt-6 border-t border-gray-200">
-                <x-submit-button>Post</x-submit-button>
+                <x-form.button>Post</x-form.button>
             </div>
         </form>
     </x-panel>

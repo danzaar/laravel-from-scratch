@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Post;
 use App\Models\Category;
+use Illuminate\Validation\Rule;
 
 class PostController extends Controller
 {
@@ -28,7 +29,30 @@ class PostController extends Controller
 
     public function create()
     {
-        return view ('posts.create');
+        return view ('admin.posts.create');
+    }
+
+    public function store()
+    {
+        $attributes = request()->validate([
+            'title' => 'required',
+            'thumbnail' => 'required|image',
+            'slug' => ['required',  Rule::unique('posts', 'slug')],
+            'excerpt' => 'required',
+            'body' => 'required',
+//           'category_id' => ['required',  Rule::exists('categories', 'id')]
+            'category_id' => ['required', Rule::exists('categories', 'id')]
+        ]);
+
+        $attributes['user_id'] = auth()->id();
+        $attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
+
+        Post::create($attributes);
+
+        $path = request()->file('thumbnail')->store('thumbnails');
+
+        return redirect('/');
+
     }
 
     // The seven restful (common) controllers

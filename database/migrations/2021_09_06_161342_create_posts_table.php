@@ -11,14 +11,20 @@ class CreatePostsTable extends Migration
      *
      * @return void
      */
+
+    protected $guarded =[];
     public function up()
     {
         Schema::create('posts', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();;
-            $table->foreignId('category_id')->constrained()->cascadeOnDelete();;
+//            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+//            $table->foreignId('category_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('user_id');
+            $table->foreignId('category_id');
             $table->string('slug')->unique();
             $table->string('title');
+            $table->string('thumbnail')->nullable();
             $table->text('excerpt');
             $table->text('body');
             $table->timestamps();

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Nette\Schema\ValidationException;
+//use Nette\Schema\ValidationException;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class SessionController extends Controller
 {

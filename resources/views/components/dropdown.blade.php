@@ -1,7 +1,7 @@
 @props(['trigger'])
 
 <div class="relative lg:inline-flex bg-gray-100 rounded-xl">
-    <div x-data="{ show: false }" @click.away="show = false">
+    <div x-data="{ show: false }" @click.away="show = false" class="relative">
         {{-- Trigger --}}
         <div @click="show = ! show">
             {{ $trigger }}

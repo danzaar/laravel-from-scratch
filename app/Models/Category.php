@@ -16,7 +16,10 @@ class Category extends Model
     /**
      * @var mixed
      */
-    private $post;
+    protected $post;
+//    protected $posts;
+
+    protected $guarded = [];
 
     public function post(): HasMany
     {

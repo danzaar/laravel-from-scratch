@@ -20,17 +20,10 @@ class CategoryFactory extends Factory
      */
     public function definition()
     {
-//        $categories = [
-//            'News',
-//            'Releases',
-//            'Podcasts',
-//            'Events'
-//        ];
-//        'name' => array_rand($categories),
-    return [
-        'name' => $this->faker->word(),
-        'slug' => $this->faker->slug()
-    ];
+        return [
+            'name' => $this->faker->word(),
+            'slug' => $this->faker->slug()
+        ];
     }
 }
 

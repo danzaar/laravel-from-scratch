@@ -17,6 +17,7 @@ class Post extends Model
 
     // You name the function scopeFilter but call it as filter->
     // If no input is given into the search field, the query will not operate
+
     public function scopeFilter($query, array $filters)
 
     {
