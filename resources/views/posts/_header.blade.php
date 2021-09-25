@@ -5,7 +5,9 @@
 
     <div class="space-y-2 lg:space-y-0 lg:space-x-4 mt-4">
         <!--  Category -->
-        <x-category-dropdown />
+        <div class="relative lg:inline-flex bg-gray-100 rounded-xl">
+            <x-category-dropdown />
+        </div>
 {{--    </div>--}}
 
         <!-- Other Filters -->

@@ -1,20 +1,29 @@
 <x-layout>
-    <section class="px-6 py-8">
-        <main class="max-w-lg mx-auto mt-10 p-6 rounded-xl">
+    <x-setting heading="Publish new post">
+        <form method="POST" action="/admin/posts/create" enctype="multipart/form-data">
+            @csrf
+            <x-form.input name="title" />
+            <x-form.input name="slug" />
+            <x-form.input name="thumbnail" type="file" />
+            <x-form.textarea name="excerpt" />
+            <x-form.textarea name="body" />
 
-          <x-panel>
-              <h1 class="text-center font-bold text-xl">Register!</h1>
-              <form method="POST" action="/register" class="mt-10">
-                  @csrf
-                  <x-form.input name="name" />
-                  <x-form.input name="username" />
-                  <x-form.input name="email" type="email" />
-                  <x-form.input name="password" type="password" />
+            <x-form.field>
+                <x-form.label name="category" />
 
-                  <x-form.button>Submit</x-form.button>
-              </form>
-          </x-panel>
+                <select name="category_id" id="category_id">
+                    @foreach (\App\Models\Category::all() as $category)
+                        <option
+                            value="{{ $category->id }}"
+                            {{ old('category_id') == $category->id ? 'selected' : '' }}
+                        >{{ ucwords($category->name) }}</option>
+                    @endforeach
+                </select>
 
-        </main>
-    </section>
+                <x-form.error name="category" />
+            </x-form.field>
+            <x-form.button>Publish</x-form.button>
+        </form>
+    </x-setting>
 </x-layout>
+

@@ -13,7 +13,7 @@
                 <x-form.textarea name="body" />
             </div>
 
-            <x-form.error name="{{ $name }}"
+            <x-form.error name="body"/>
 
             <div class="flex justify-end mt-6 pt-6 border-t border-gray-200">
                 <x-form.button>Post</x-form.button>
@@ -21,7 +21,7 @@
         </form>
     </x-panel>
 @else
-    <p class="font-semibolc">
+    <p class="font-semibold">
         <a href="/register" class="hover:underline">Register</a>
         or
         <a href="/login" class="hover:underline">Log in to leave a comment</a>

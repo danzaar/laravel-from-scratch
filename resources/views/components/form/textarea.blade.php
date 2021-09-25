@@ -6,9 +6,9 @@
     <textarea class="border border-gray-200 rounded p-2 w-full"
               name="{{ $name }}"
               id="{{ $name }}"
-              cols="30"
-              rows="10"
-    >{{ old($name) }}</textarea>
+              required
+              {{ $attributes }}
+    >{{ $slot ?? old($name) }}</textarea>
 
     <x-form.error name="{{ $name }}"/>
 </x-form.field>
